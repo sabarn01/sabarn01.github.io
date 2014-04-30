@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<style type="text/css">
+  		table
+  		{
+			border-collapse:collapse;
+		}
+		table, th, td
+		{
+			border: 1px solid black;
+		}
+  	</style>
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  	<script>
+ 	var requests = []; 
+  	$( document ).ready(function() {
+  		
+    	$.get( "https://api.github.com/repos/LCHSTest/Website/forks", function( data ) {
+    		var table = $('#UserTable')[0]; 
+    		for (index = 0; index < data.length; ++index) {
+    			var userName = data[index].owner.login;
+    			var row =  table.insertRow(1);
+    			var UserCell = row.insertCell(0);    			
+    			var StatusCell = row.insertCell(1); 
+    			StatusCell.id = userName +"Status"; 
+    			var a = document.createElement('a');
+				var linkText = document.createTextNode(userName);
+				var url ='http://' + userName +'.github.io/';
+				a.appendChild(linkText);
+				a.href = url;
+				a.title = userName + " Website"; 
+    			UserCell.appendChild(a);
+    			
+    			ifrm = document.createElement("IFRAME"); 
+   				ifrm.setAttribute("src", url); 
+   				ifrm.style.width = 640+"px"; 
+   				ifrm.style.height = 480+"px"; 
+   				StatusCell.appendChild(ifrm);
+
+    			/*req.done( function(data){
+    				StatusCell.style.backgroundColor= "green";
+    			});    			
+    			req.fail(function(data){
+    				StatusCell.style.backgroundColor= "red";
+    			});*/
+			}
+			for (index = 0; index < requests.length; ++index) {
+	    		req = $.get(requests[index].url,function(data) {
+	    				requests[index].cell.style.backgroundColor= "green";
+	    		});
+	    		req.fail(function(data){
+	    				requests[index].cell.style.backgroundColor= "red";
+    		});
+    	}	      
+
+    	});
+    	
+	});
+ 
+  </script>
+    <title>Your alls websites</title>
+  </head>
+  <body>
+  	<h1> Everyones website </h1>
+  	<table id="UserTable" style="border-collapse:collapse;">
+
+  		<tr>
+  			<th>User</th>  			
+  			<th>Status</th>
+  		</tr>
+  	</table>
+  </body>
+</html>
+
