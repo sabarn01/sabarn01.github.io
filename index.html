@@ -20,6 +20,8 @@
     		var table = $('#UserTable')[0]; 
     		for (index = 0; index < data.length; ++index) {
     			var userName = data[index].owner.login;
+    			if(userName == "sabarn01")
+    				continue; 
     			var row =  table.insertRow(1);
     			var UserCell = row.insertCell(0);    			
     			var StatusCell = row.insertCell(1); 
