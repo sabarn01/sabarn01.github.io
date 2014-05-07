@@ -1,64 +1,35 @@
-<!DOCTYPE html>
 <html>
-  <head>
-  	<style type="text/css">
-  		table
-  		{
-			border-collapse:collapse;
-		}
-		table, th, td
+<head>
+	<title>Hello World</title>
+</head>
+<body>
+	<script type="text/javascript">
+	  	document.write("<h1> assignment 1 </h1>");
+		for(var x = 1 ; x <= 10 ; x++)
 		{
-			border: 1px solid black;
+			document.write(x);
+			document.write("</br>");
 		}
-  	</style>
-  	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-  	<script>
- 	var requests = []; 
-  	$( document ).ready(function() {
-    	$.get( "https://api.github.com/repos/LCHSTest/Website/forks", function( data ) {
-    		var table = $('#UserTable')[0]; 
-    		for (index = 0; index < data.length; ++index) {
-    			var userName = data[index].owner.login;
-    			if(userName === "sabarn01")
-    			{
-    				continue; 
-    			}
-    			var row =  table.insertRow(1);
-    			var UserCell = row.insertCell(0);    			
-    			var StatusCell = row.insertCell(1); 
-    			StatusCell.id = userName +"Status"; 
-    			var a = document.createElement('a');
-				var linkText = document.createTextNode(userName);
-				var url ='http://' + userName +'.github.io/';
-				a.appendChild(linkText);
-				a.href = url;
-				a.title = userName + " Website"; 
-    			UserCell.appendChild(a);
-    			
-    			ifrm = document.createElement("IFRAME"); 
-   			    ifrm.setAttribute("src", url); 
-   			    ifrm.style.width = 640+"px"; 
-   			    ifrm.style.height = 480+"px"; 
-   			    StatusCell.appendChild(ifrm);
-    		}
-    			
-    	});
-    });	      
+		document.write("<h1> assignment 2 </h1>");
+		for(x = 1 ; x <= 10 ; x++)
+		{
+			document.write(x);
+			document.write("</br>");
+		}
+		document.write("<h1> assignment 3 </h1>");
+		for(var y = 1 ; y <= 10 ; y++)
+		{
+			for(var x = 1 ; x <= 10 ; x++)
+			{
+				document.write(x);
+				document.write(y);
+				document.write(" ");
 
-  
- 
-  </script>
-    <title>Your alls websites</title>
-  </head>
-  <body>
-  	<h1> Everyones website </h1>
-  	<table id="UserTable" style="border-collapse:collapse;">
 
-  		<tr>
-  			<th>User</th>  			
-  			<th>Status</th>
-  		</tr>
-  	</table>
-  </body>
+			}
+			document.write("</br>");
+		}
+
+	</script>
+</body>
 </html>
-
